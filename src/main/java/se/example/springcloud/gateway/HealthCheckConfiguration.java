@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 import org.springframework.boot.actuate.health.CompositeReactiveHealthContributor;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.ReactiveHealthContributor;
@@ -32,6 +31,7 @@ public class HealthCheckConfiguration {
     registry.put("recommendation",    () -> getHealth("http://recommendation-service"));
     registry.put("review",            () -> getHealth("http://review-service"));
     registry.put("product-composite", () -> getHealth("http://product-composite-service"));
+    registry.put("auth-server", () -> getHealth("http://auth-server"));
 
     return CompositeReactiveHealthContributor.fromMap(registry);
   }
